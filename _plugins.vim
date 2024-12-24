@@ -1,6 +1,6 @@
 vim9script
 
-plug#begin("~/.vim/plugged") 
+plug#begin("plugged/") 
 
 # General 
 Plug "machakann/vim-sandwich" | nmap s <Nop> ; xmap s <Nop>

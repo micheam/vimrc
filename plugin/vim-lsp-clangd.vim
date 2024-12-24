@@ -1,0 +1,24 @@
+vim9script
+
+if !executable('clangd')
+    :echomsg "clangd not found"
+    finish
+endif
+
+if !exists('g:lsp_log_file')
+    g:lsp_log_file = '' # expand('~/vim-lsp.log')
+endif
+
+var server_info = {
+    name: 'clangd',
+    cmd: (server_info) => ['clangd'],
+    whitelist: ['c', 'cpp', 'objc', 'objcpp', 'cuda'],
+    config: {},
+    workspace_config: {},
+    semantic_highlight: {},
+}
+
+# call legacy vim script function
+call lsp#register_server(server_info)
+
+defcompile

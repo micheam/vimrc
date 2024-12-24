@@ -1,0 +1,19 @@
+html {
+    /**
+     * This is the same color as the background color of the paper.vim theme
+     * https://github.com/micheam/vim-paper/blob/main/colors/paper.vim
+     */
+    background-color: #EAE9E3;
+}
+
+body {
+    font-family: "Noto Serif JP", "Zen Kaku Gothic Antique", "JetBrains Mono", helvetica, arial, freesans, clean, sans-serif;
+}
+
+.highlight pre, pre {
+    padding: 0;
+}
+
+code {
+    font-family: monospace, monospace;
+}

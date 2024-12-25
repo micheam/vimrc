@@ -4,31 +4,34 @@ set termguicolors
 filetype plugin indent on
 syntax enable
 
-if filereadable("_plugins.vim")
-  if empty(glob('./autoload/plug.vim'))
-    silent execute '!curl -fLo ./autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" vimrc ファイルのディレクトリを取得
+let s:vimrc_dir = fnamemodify(expand('$MYVIMRC'), ':h')
+
+if filereadable(s:vimrc_dir . '/_plugins.vim')
+  if empty(glob(s:vimrc_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo ' . s:vimrc_dir . '/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   endif
-  source _plugins.vim
+  execute 'source ' . s:vimrc_dir . '/_plugins.vim'
 endif
 
-if filereadable("_general.vim")
-  source _general.vim
+if filereadable(s:vimrc_dir . '/_general.vim')
+  execute 'source ' . s:vimrc_dir . '/_general.vim'
 endif
 
-if filereadable("_keymaps.vim")
-  source _keymaps.vim
+if filereadable(s:vimrc_dir . '/_keymaps.vim')
+  execute 'source ' . s:vimrc_dir . '/_keymaps.vim'
 endif
 
-if filereadable("_filetypes.vim")
-  source _filetypes.vim
+if filereadable(s:vimrc_dir . '/_filetypes.vim')
+  execute 'source ' . s:vimrc_dir . '/_filetypes.vim'
 endif
 
-if filereadable("_functions.vim")
-  source _functions.vim
+if filereadable(s:vimrc_dir . '/_functions.vim')
+  execute 'source ' . s:vimrc_dir . '/_functions.vim'
 endif
 
-colorscheme paper
+silent! colorscheme paper
 set colorcolumn=130
 set cursorline
 set cursorlineopt=screenline

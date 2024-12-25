@@ -1,6 +1,8 @@
 vim9script
 
-plug#begin("plugged/") 
+const vimrc_dir = fnamemodify(expand('$MYVIMRC'), ':h')
+
+plug#begin(vimrc_dir .. "/plugged") 
 
 # General 
 Plug "machakann/vim-sandwich" | nmap s <Nop> ; xmap s <Nop>

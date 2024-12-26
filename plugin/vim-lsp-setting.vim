@@ -82,8 +82,6 @@ if executable('gopls')
         "autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
         "autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
     augroup END
-else
-    :echomsg "vim-lsp for go unavailable"
 endif
 " }}}
 " Rust {{{2
@@ -106,8 +104,6 @@ if executable('rust-analyzer')
                     \   },
                     \ })
     augroup END
-else
-    :echomsg "vim-lsp for rust unavailable"
 endif
 " }}}
 " TypeScript {{{2
@@ -128,8 +124,6 @@ if executable('typescript-language-server')
                     \ })
         autocmd FileType typescript setlocal omnifunc=lsp#complete
     augroup END
-else
-    :echomsg "vim-lsp for typescript unavailable"
 endif
 " }}}
 " Svelte {{{2
@@ -186,8 +180,6 @@ if executable('css-languageserver')
                     \ })
         autocmd FileType css setlocal omnifunc=lsp#complete
     augroup END
-else
-    :echomsg "vim-lsp for css unavailable"
 endif
 " }}}
 " OCaml {{{2
@@ -303,8 +295,6 @@ if executable('bufls')
         " autocmd BufWritePre *.swift call execute('LspDocumentFormatSync --server=efm-langserver')
         
     augroup END
-else
-    :echomsg "vim-lsp for bufls unavailab"
 endif
 " }}}
 " Bash {{{2

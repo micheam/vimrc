@@ -46,44 +46,6 @@ highlight lspReference term=underline cterm=underline
 " Settings for each language server
 " ==============================================================================
 
-" Go {{{2
-" workspace_config に指定可能なキーについては、以下を参照
-" > https://github.com/golang/tools/blob/master/gopls/doc/settings.md
-if executable('gopls')
-    augroup LspGo
-        au!
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'go-lang',
-                    \ 'cmd': {server_info->['gopls']},
-                    \ 'root_uri':{server_info->
-                    \   lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'go.mod'))
-                    \ },
-                    \ 'allowlist': ['go', 'modula2'],
-                    \ 'workspace_config': {'gopls': {
-                    \     'usePlaceholders': v:true,
-                    \     'analyses': {
-                    \       'unreachable': v:true,
-                    \       'unusedparams': v:true,
-                    \     },
-                    \     'staticcheck': v:true,
-                    \     'hoverKind': 'FullDocumentation',
-                    \     'completeUnimported': v:true,
-                    \     'completionDocumentation': v:true,
-                    \     'deepCompletion': v:true,
-                    \     'codelenses': {
-                    \       'generate': v:true,
-                    \       'tidy': v:true,
-                    \       'upgrade_dependency': v:true,
-                    \     },
-                    \ }},
-                    \ })
-        autocmd FileType go setlocal omnifunc=lsp#complete
-        "autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
-        "autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
-        "autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
-    augroup END
-endif
-" }}}
 " Rust {{{2
 if executable('rust-analyzer')
     augroup LspRust
@@ -208,7 +170,12 @@ if executable('xcrun')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'sourcekit-lsp',
         \ 'cmd': {server_info->['xcrun', 'sourcekit-lsp']},
-        \ 'whitelist': ['swift'],
+        \ 'allowlist': ['swift'],
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(
+        \     lsp#utils#find_nearest_parent_file_directory(
+        \         lsp#utils#get_buffer_path(),
+        \         ['Package.swift', '.git/']
+        \     ))},
         \ })
 
     autocmd BufWritePre *.swift call execute('LspDocumentFormatSync --server=efm-langserver')

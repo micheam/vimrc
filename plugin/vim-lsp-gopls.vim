@@ -13,12 +13,13 @@ endif
 var server_info = {
     name: 'gopls',
     cmd: (server_info) => ['gopls'],
-    allowlist: ['go'],
+    allowlist: ['go', 'gomod', 'gohtmltmpl', 'gotexttmpl'],
     config: {},
     root_uri: (server_info) => {
         return lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'go.mod'))
     },
-    workspace_config: {
+    workspace_config: {},
+    initialization_options: {
         usePlaceholders: true,    
         analyses: {
             unreachable: true,
@@ -32,7 +33,17 @@ var server_info = {
         codelenses: {
             generate: true,
             tidy: true,
+            test: true,
             upgrade_dependency: true,
+        },
+        "ui.inlayhint.hints": {
+            assignVariableTypes: true,
+            compositeLiteralFields: true,
+            compositeLiteralTypes: true,
+            constantValues: true,
+            functionTypeParameters: true,
+            parameterNames: true,
+            rangeVariableTypes: true,
         },
     },
     semantic_highlight: {},

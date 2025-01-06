@@ -5,7 +5,7 @@ let g:lsp_highlight_references_enabled = 1
 highlight lspReference cterm=undercurl gui=undercurl
 
 let g:lsp_diagnostics_virtual_text_enabled = 1
-let g:lsp_diagnostics_virtual_text_align = "right"
+let g:lsp_diagnostics_virtual_text_align = "after"
 let g:lsp_diagnostics_virtual_text_delay = 200
 let g:lsp_diagnostics_virtual_text_insert_mode_enabled = 1
 highlight link LspErrorVirtualText ErrorMsg
@@ -20,13 +20,20 @@ let g:lsp_diagnostics_signs_warning = {'text': '⚠️'}
 let g:lsp_diagnostics_signs_information = {'text': 'ℹ️'}
 let g:lsp_diagnostics_signs_hint = {'text': '💡'}
 let g:lsp_diagnostics_signs_insert_mode_enabled = 1
-let g:lsp_document_code_action_signs_hint = {'text': '💡'}
+let g:lsp_document_code_action_signs_enabled = 0
 let g:lsp_async_completion = 1
 let g:lsp_preview_fixup_conceal = 1
 
+" inlay-hints
+let g:lsp_inlay_hints_enabled = 1
+let g:lsp_inlay_hints_delay = 100
+" let g:lsp_inlay_hints_mode = {'normal': ['!curline']}
+highlight link lspInlayHintsType Comment
+highlight link lspInlayHintsParameter Comment
+
 let g:lsp_show_message_log_level = 'log'
-"let g:lsp_log_file = expand("~/vim-lsp.log")
-let g:lsp_log_file = ''
+let g:lsp_log_file = expand("~/vim-lsp.log")
+" let g:lsp_log_file = ''
 
 " Highlight {{{1
 " ==============================================================================

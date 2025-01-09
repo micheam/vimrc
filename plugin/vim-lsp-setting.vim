@@ -172,22 +172,6 @@ if executable('ocamllsp')
     augroup END
 endif
 " }}}
-" swift {{{2
-if executable('xcrun')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'sourcekit-lsp',
-        \ 'cmd': {server_info->['xcrun', 'sourcekit-lsp']},
-        \ 'allowlist': ['swift'],
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(
-        \     lsp#utils#find_nearest_parent_file_directory(
-        \         lsp#utils#get_buffer_path(),
-        \         ['Package.swift', '.git/']
-        \     ))},
-        \ })
-
-    autocmd BufWritePre *.swift call execute('LspDocumentFormatSync --server=efm-langserver')
-endif
-" }}}
 " efm {{{2
 if executable('efm-langserver')
   augroup LspEFM

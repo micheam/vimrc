@@ -80,7 +80,8 @@ Plug "tpope/vim-fugitive"
 Plug "tpope/vim-rhubarb"
 Plug "airblade/vim-gitgutter"
 Plug "mattn/gist-vim"
-Plug "koizuss/shareline.vim"
+# Plug "koizuss/shareline.vim"
+Plug "micheam/shareline.vim"
  
 # shell 
 Plug "vim-scripts/awk-support.vim"  , {"for": "awk"}

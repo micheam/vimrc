@@ -19,7 +19,10 @@ var server_info = {
 }
 
 if executable('clangd')
-    autocmd User lsp_setup call lsp#register_server(server_info)
+    augroup lsp_clangd
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server(server_info)
+    augroup END
 endif
 
 defcompile

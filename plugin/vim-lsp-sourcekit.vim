@@ -36,8 +36,11 @@ var server_info = {
 }
 
 if executable('xcrun')
-    autocmd User lsp_setup call lsp#register_server(server_info)
-    autocmd BufWritePre *.swift call execute('LspDocumentFormatSync --server=efm-langserver')
+    augroup lsp_sourcekit
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server(server_info)
+        autocmd BufWritePre *.swift call execute('LspDocumentFormatSync --server=efm-langserver')
+    augroup END
 endif
 
 defcompile

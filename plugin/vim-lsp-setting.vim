@@ -25,14 +25,14 @@ let g:lsp_async_completion = 1
 let g:lsp_preview_fixup_conceal = 1
 
 " inlay-hints
-let g:lsp_inlay_hints_enabled = 0
+" let g:lsp_inlay_hints_enabled = 0
 " let g:lsp_inlay_hints_delay = 100
 " highlight link lspInlayHintsType Comment
 " highlight link lspInlayHintsParameter Comment
 
-let g:lsp_show_message_log_level = 'info'
+let g:lsp_show_message_log_level = 'warning'
 let g:lsp_log_file = expand("~/vim-lsp.log")
-"let g:lsp_log_file = ''
+" let g:lsp_log_file = ''
 
 " Highlight {{{1
 " ==============================================================================

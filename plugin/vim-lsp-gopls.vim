@@ -36,7 +36,7 @@ var server_info = {
             test: true,
             upgrade_dependency: true,
         },
-        "ui.inlayhint.hints": {
+        'ui.inlayhint.hints': {
             assignVariableTypes: true,
             compositeLiteralFields: true,
             compositeLiteralTypes: true,
@@ -50,7 +50,10 @@ var server_info = {
 }
 
 if executable('gopls')
-    autocmd User lsp_setup call lsp#register_server(server_info)
+    augroup lsp_gopls
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server(server_info)
+    augroup END
 endif
 
 defcompile

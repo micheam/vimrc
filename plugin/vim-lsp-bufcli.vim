@@ -57,8 +57,10 @@ var server_info = {
 }
 
 if executable('buf')
-    autocmd User lsp_setup call lsp#register_server(server_info)
-    # autocmd BufWritePre *.proto call execute('LspDocumentFormatSync --server=efm-langserver')
+    augroup lsp_bufcli
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server(server_info)
+    augroup END
 endif
 
 defcompile

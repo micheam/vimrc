@@ -19,6 +19,11 @@ var server_info = {
 }
 
 # call legacy vim script function
-call lsp#register_server(server_info)
+if executable('zls')
+    augroup lsp_zls
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server(server_info)
+    augroup END
+endif
 
 defcompile

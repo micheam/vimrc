@@ -18,7 +18,8 @@ var server_info = {
     semantic_highlight: {},
 }
 
-# call legacy vim script function
-call lsp#register_server(server_info)
+if executable('clangd')
+    autocmd User lsp_setup call lsp#register_server(server_info)
+endif
 
 defcompile

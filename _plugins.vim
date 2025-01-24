@@ -16,7 +16,6 @@ Plug 'girishji/vimcomplete'
 Plug 'itchyny/vim-highlighturl'
 
 Plug "/Users/micheam/ghq/github.com/micheam/vim-hardwrap"
-Plug "tpope/vim-commentary"
 Plug "godlygeek/tabular"
 Plug "thinca/vim-quickrun"
 nnoremap [quickrun] <Nop>

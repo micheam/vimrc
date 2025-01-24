@@ -66,3 +66,10 @@ inoremap {<CR> {<CR><CR>}<ESC><Up>i<Tab>
 inoremap (<CR> (<CR><CR>)<ESC><Up>i<Tab>
 inoremap () ()
 inoremap ( ()<Left>
+
+# Toggle comment
+silent! packadd comment
+silent! import autoload 'dist/comment.vim'
+nnoremap <silent> <expr> gc comment.Toggle()
+xnoremap <silent> <expr> gc comment.Toggle()
+nnoremap <silent> <expr> gcc comment.Toggle() .. '_'

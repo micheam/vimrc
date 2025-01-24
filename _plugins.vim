@@ -12,6 +12,8 @@ Plug "t9md/vim-choosewin" | nmap <space>` <Plug>(choosewin)
 Plug "guns/vim-sexp" | Plug "tpope/vim-sexp-mappings-for-regular-people"
 g:sexp_enable_insert_mode_mappings = 1
 g:sexp_filetypes = "clojure,scheme,lisp,timl"
+Plug 'girishji/vimcomplete'
+Plug 'itchyny/vim-highlighturl'
 
 Plug "/Users/micheam/ghq/github.com/micheam/vim-hardwrap"
 Plug "tpope/vim-commentary"

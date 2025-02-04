@@ -5,10 +5,6 @@ if !executable('zls')
     finish
 endif
 
-if !exists('g:lsp_log_file')
-    g:lsp_log_file = '' # expand('~/vim-lsp.log')
-endif
-
 var server_info = {
     name: 'zls',
     cmd: (server_info) => ['zls'],

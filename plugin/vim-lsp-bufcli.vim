@@ -5,10 +5,6 @@ if !executable('buf')
     finish
 endif
 
-if !exists('g:lsp_log_file')
-    g:lsp_log_file = expand('~/vim-lsp.log')
-endif
-
 #
 # Note: Currently, the buf language server is in beta.
 #

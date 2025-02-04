@@ -5,10 +5,6 @@ if !executable('gopls')
     finish
 endif
 
-if !exists('g:lsp_log_file')
-    g:lsp_log_file = '' # expand('~/vim-lsp.log')
-endif
-
 # see more info at: https://github.com/golang/tools/blob/master/gopls/doc/settings.md
 var server_info = {
     name: 'gopls',

@@ -25,14 +25,14 @@ let g:lsp_async_completion = 1
 let g:lsp_preview_fixup_conceal = 1
 
 " inlay-hints
-" let g:lsp_inlay_hints_enabled = 0
-" let g:lsp_inlay_hints_delay = 100
-" highlight link lspInlayHintsType Comment
-" highlight link lspInlayHintsParameter Comment
+let g:lsp_inlay_hints_enabled = 0
+let g:lsp_inlay_hints_delay = 100
+highlight link lspInlayHintsType Comment
+highlight link lspInlayHintsParameter Comment
 
 let g:lsp_show_message_log_level = 'warning'
-let g:lsp_log_file = expand("~/vim-lsp.log")
-" let g:lsp_log_file = ''
+" let g:lsp_log_file = expand("~/vim-lsp.log")
+let g:lsp_log_file = ''
 
 " Highlight {{{1
 " ==============================================================================
@@ -381,6 +381,12 @@ function! s:on_lsp_buffer_enabled() abort
     command! DocumentFold call lsp#ui#vim#folding#fold(0)
     command! DocumentFoldSync call lsp#ui#vim#folding#fold(1)
     command! -nargs=? SemanticScopes call lsp#ui#vim#semantic#display_scope_tree(<args>)
+
+    vim9cmd command! -nargs=0 ToggleInlayHints {
+        if exists('g:lsp_inlay_hints_enabled')
+            g:lsp_inlay_hints_enabled = !g:lsp_inlay_hints_enabled
+        endif
+    }
 
 endfunction
 

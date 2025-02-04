@@ -5,11 +5,6 @@ if !executable('jdtls')
     finish
 endif
 
-if !exists('g:lsp_log_file')
-    g:lsp_log_file = expand('~/vim-lsp.log')
-    g:lsp_log_verbose = v:false
-endif
-
 # For MacOS (Homebrew):
 # https://formulae.brew.sh/formula/jdtls
 var server_info = {

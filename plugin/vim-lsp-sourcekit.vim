@@ -5,10 +5,6 @@ if !executable('sourcekit-lsp')
     finish
 endif
 
-if !exists('g:lsp_log_file')
-    g:lsp_log_file = '' # expand('~/vim-lsp.log')
-endif
-
 var server_info = {
     name: 'sourcekit-lsp',
     cmd: (server_info) => [

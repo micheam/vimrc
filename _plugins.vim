@@ -37,9 +37,9 @@ Plug "tyru/open-browser.vim"
 Plug "mattn/webapi-vim"
 Plug "mattn/vim-sonictemplate" | Plug "micheam/vim-sonictemplate-template"
 g:sonictemplate_vim_template_dir = [
-  $HOME .. "/.vim/plugged/vim-sonictemplate-template/template",
-  $HOME .. "/.vim/plugged/vim-sonictemplate/template",
-  $HOME .. "/dotfiles/vim/template"
+  vimrc_dir .. "/plugged/vim-sonictemplate-template/template",
+  vimrc_dir .. "/plugged/vim-sonictemplate/template",
+  vimrc_dir .. "/template"
 ]
 g:sonictemplate_vim_vars = { "_": { "author": "Michto Maeda" } }
 imap <C-j> <C-r>=sonictemplate#expand()<CR>

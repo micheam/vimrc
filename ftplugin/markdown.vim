@@ -2,6 +2,7 @@ vim9script
 setlocal concealcursor=nc
 setlocal foldmethod=expr
 setlocal foldexpr=FoldMarkdownDetails(v:lnum)
+setlocal conceallevel=0
 
 def FoldMarkdownDetails(lnum: number): string
     const line = getline(lnum)

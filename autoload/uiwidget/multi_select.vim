@@ -6,15 +6,11 @@ vim9script
 # Author: Michito Maeda <michto.maeda@gmail.com>
 # License: MIT
 # Created: 2025-01-20
-# Last Updated: 2025-01-24T09:48:16+09:00
+# Last Updated: 2025-02-20T22:58:16+09:00
 # Version: 0.1.0
 # Dependencies: 
-#   - Vim 9.0 or higher
-#   - ./widget.vim (imported as a dependency)
-#
+#   - Vim patch 9.1.1119 or higher
 #==============================================================================
-import './widget.vim'
-
 # MultiSelect is a popup menu widget that allows users to select multiple items.
 #
 # Usage:
@@ -22,16 +18,16 @@ import './widget.vim'
 #   and manage a popup menu for multi-selection. Example usage:
 #
 #   ```vim
-#   const items = ["OPTION 1", "OPTION 2", "OPTION 3"]
-#   const selector = MultiSelect.new(items, (selected_indices): bool => {
-#       if selected_indices->len() == 0
-#           echom "No item selected"
-#           return false
-#       endif
-#       echom $"Selected items: {selected_indices->map(i => items[i])}"
+#   vim9script
+#   import autoload 'uiwidget/multi_select.vim'
+#   const opts = ["OPTION 1", "OPTION 2", "OPTION 3", "OPTION 4", "OPTION 5"]
+#   const selector = multi_select.MultiSelect.new(opts, (selected_indices): bool => {
+#       echomsg $"Selected indices: {selected_indices}"
 #       return true
 #   })
-#   selector.Render()
+#   command! ShowUI {
+#           selector.Render()
+#       }
 #   ```
 #
 # Features:
@@ -44,13 +40,18 @@ import './widget.vim'
 #   - Add support for controlling popup window position
 #   - Add support for customizing popup window style
 #     (border, borderchars, etc.)
-export class MultiSelect implements widget.Widget
+export class MultiSelect
 
     var Handler: func(list<number>): bool
 
+    # Internal state
     var items: list<string>
     var winid: number = -1
     var selected_indices: list<number> # elements are 0-based indices
+
+    # Style settings
+    public var borderchars = ['─', '│', '─', '│', '╭', '╮', '╯', '╰']
+    public var border = [1, 1, 1, 1]
 
     def new(this.items, this.Handler)
     enddef
@@ -79,8 +80,9 @@ export class MultiSelect implements widget.Widget
             filter: this._handleKeyPress,
             drag: true,
             cursorline: true,
-            border: [1, 1, 1, 1],
-            borderchars: ['─', '│', '─', '│', '╭', '╮', '╯', '╰'],
+
+            border: this.border,
+            borderchars: this.borderchars,
         })
         this.winid = winid
     enddef
@@ -91,6 +93,10 @@ export class MultiSelect implements widget.Widget
             popup_close(this.winid)
             this.winid = -1
         endif
+    enddef
+
+    def SetSelectedIndices(selected_indices: list<number>)
+        this.selected_indices = selected_indices
     enddef
 
     # Handle key press event, return true to consume the key
@@ -131,11 +137,5 @@ export class MultiSelect implements widget.Widget
         this.selected_indices->remove(found_at)
     enddef
 endclass
-
-const opts = ["OPTION 1", "OPTION 2", "OPTION 3", "OPTION 4", "OPTION 5"]
-const selector = MultiSelect.new(opts, (selected_indices): bool => {
-    return true
-})
-selector.Render()
 
 defcompile MultiSelect

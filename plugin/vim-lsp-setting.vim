@@ -34,6 +34,12 @@ let g:lsp_show_message_log_level = 'warning'
 " let g:lsp_log_file = expand("~/vim-lsp.log")
 let g:lsp_log_file = ''
 
+function! s:log(msg) abort
+    if exists('g:lsp_show_message_log_level') && g:lsp_show_message_log_level == 'log'
+        echomsg a:msg
+    endif
+endfunction
+
 " Highlight {{{1
 " ==============================================================================
 highlight LspErrorHighlight term=underline cterm=underline gui=underline
@@ -129,7 +135,7 @@ if executable('html-languageserver')
         autocmd FileType html setlocal omnifunc=lsp#complete
     augroup END
 else
-    :echomsg "vim-lsp for typescript unavailable"
+    call s:log("html-languageserver not found")
 endif
 " }}}
 " CSS {{{2
@@ -268,7 +274,7 @@ if executable('bash-language-server')
                     \ 'workspace_config': {},
                     \ })
 else
-    :echomsg "vim-lsp for bash unavailable"
+    call s:log("bash-language-server not found")
 endif
 
 " Key Mappings & Commands {{{1

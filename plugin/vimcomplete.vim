@@ -20,5 +20,8 @@ var options = {
         filetypesComments: ['c', 'cpp', 'python', 'java', 'go', 'vim'],
     },
 }
-autocmd VimEnter * g:VimCompleteOptionsSet(options)
+
+if has('g:VimCompleteOptionsSet')
+    autocmd VimEnter * g:VimCompleteOptionsSet(options)
+endif
 

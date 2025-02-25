@@ -1,7 +1,6 @@
 vim9script
 
 if !executable('jdtls')
-    :echomsg "jdtls not found"
     finish
 endif
 

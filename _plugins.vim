@@ -45,15 +45,7 @@ g:sonictemplate_vim_vars = { "_": { "author": "Michto Maeda" } }
 imap <C-j> <C-r>=sonictemplate#expand()<CR>
 
 Plug "h1mesuke/vim-alignta"
-Plug "majutsushi/tagbar" | g:tagbar_left = 1 | g:tagbar_show_linenumbers = 1 | g:tagbar_type_proto = {
-  "kinds": [
-    "p:packages:0:0",
-    "m:messages:0:0",
-    "f:fields:1:0",
-    "e:enum constants:0:0",
-    "g:enum types:0:0",
-    "s:services:0:0",
-  ]}
+Plug "majutsushi/tagbar"
 Plug "junegunn/fzf", { "do": "./install --all" } | Plug "junegunn/fzf.vim"
 set rtp+=/usr/local/opt/fzf
 set rtp+=/opt/homebrew/opt/fzf
@@ -291,39 +283,6 @@ Plug "rust-lang/rust.vim" | g:rust_clip_command = "pbcopy"
 # Zig
 Plug "ziglang/zig.vim"
 
-# gotags
-# check if gotags command exists
-if executable("gotags")
-    g:tagbar_type_go = {
-        "ctagstype": "go",
-        "kinds": [
-            "p:package",
-            "i:imports:1",
-            "c:constants",
-            "v:variables",
-            "t:types",
-            "n:interfaces",
-            "w:fields",
-            "e:embedded",
-            "m:methods",
-            "r:constructor",
-            "f:functions"
-        ],
-        "sro": ".",
-        "kind2scope": {
-            "t": "ctype",
-            "n": "ntype"
-        },
-        "scope2kind": {
-            "ctype": "t",
-            "ntype": "n"
-        },
-        "ctagsbin": "gotags",
-        "ctagsargs": "-sort -silent"
-    }
-else
-    echo "gotags command not found. Please install gotags command."
-endif
 
 Plug "micheam/vim-go-test", {"for": "go", "branch": "develop"}
 g:force_reload_go_test = 1

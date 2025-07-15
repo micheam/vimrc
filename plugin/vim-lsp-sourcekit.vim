@@ -8,15 +8,11 @@ endif
 var server_info = {
     name: 'sourcekit-lsp',
     cmd: (server_info) => [
-        'sourcekit-lsp',
-        '-Xswiftc',
-        '-sdk',
-        '-Xswiftc',
-        '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.2.sdk',
-        '-Xswiftc',
-        '-target',
-        '-Xswiftc',
-        'x86_64-apple-ios18.2-simulator',
+        'xcrun', 'sourcekit-lsp',
+        '-Xswiftc', '"-sdk"',
+        '-Xswiftc', '"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator18.5.sdk"',
+        '-Xswiftc', '"-target"',
+        '-Xswiftc', '"arm64-apple-ios18.5-simulator"',
     ],
     allowlist: ['swift'],
     config: {},
@@ -34,8 +30,12 @@ var server_info = {
 if executable('xcrun')
     augroup lsp_sourcekit
         autocmd!
-        autocmd User lsp_setup call lsp#register_server(server_info)
-        autocmd BufWritePre *.swift call execute('LspDocumentFormatSync --server=efm-langserver')
+        autocmd User lsp_setup {
+            lsp#register_server(server_info)
+        }
+        autocmd BufWritePre *.swift {
+            execute 'LspDocumentFormat'
+        }
     augroup END
 endif
 

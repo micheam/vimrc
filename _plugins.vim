@@ -293,9 +293,7 @@ Plug "dart-lang/dart-vim-plugin"
 g:dart_format_on_save = 1
  
 # Language Server Protocol 
-Plug "prabirshrestha/asyncomplete.vim"
 Plug "prabirshrestha/vim-lsp"
-Plug "prabirshrestha/asyncomplete-lsp.vim"
  
 # Clojure 
 #Plug "guns/vim-clojure-static"             , {"for": "clojure"}

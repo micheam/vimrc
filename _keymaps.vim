@@ -67,6 +67,9 @@ inoremap (<CR> (<CR><CR>)<ESC><Up>i<Tab>
 inoremap () ()
 inoremap ( ()<Left>
 
+# TagJump
+nnoremap <Space><Space> :TagJump<CR>
+
 # Toggle comment
 silent! packadd comment
 silent! import autoload 'dist/comment.vim'

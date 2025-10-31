@@ -5,7 +5,11 @@ vim9script
 # TODO: enable vsnip and lsp
 
 var options = {
-    completor: { shuffleEqualPriority: true, postfixHighlight: true },
+    completor: {
+        shuffleEqualPriority: true,
+        postfixHighlight: true,
+        triggerWordLen: 10
+    },
     buffer: { enable: true, priority: 10, urlComplete: true, envComplete: true },
     abbrev: { enable: true, priority: 10 },
     lsp: { enable: false, priority: 10, maxCount: 5 },

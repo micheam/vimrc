@@ -1,37 +1,32 @@
+vim9script
+
 set previewheight=5
 set tabstop=4
 set shiftwidth=4
 
-function! go#echo_package()
-    function! HandleMsg(ch, msg)
-        echomsg "Packge: " . a:msg
-    endfunction
-    let job = job_start('go list .', {
-                \ 'cwd': expand('%:p:h'),
-                \ 'callback': 'HandleMsg',
-                \ })
-    return job
-endfunction
-
-function! go#package() abort
-    let org_cwd = getcwd('.')
+def Package(): string
+    const org_cwd = getcwd(0)
     lcd %:p:h
-    let slist=systemlist('go list .')
-    execute 'lcd' . org_cwd 
+    const slist = systemlist('go list .')
+    execute 'lcd ' .. org_cwd 
     if v:shell_error
         return ""
     endif
     return slist->get(0, "NONE")
-endfunction
+enddef
 
-command Package :call go#echo_package()
+command Package {
+        echo Package()
+    }
 
 set foldmethod=syntax
 set nofoldenable
 set foldtext=GoFoldText()
-function! GoFoldText()
-  let start = substitute(getline(v:foldstart), '\t', '    ', 'g')
-  let end_ = substitute(getline(v:foldend), '\t', '', 'g')
-  let num_ = v:foldend - v:foldstart
+def GoFoldText(): string
+  const start = substitute(getline(v:foldstart), '\t', '    ', 'g')
+  const end_ = substitute(getline(v:foldend), '\t', '', 'g')
+  const num_ = v:foldend - v:foldstart
   return start .. "/* " .. num_ .. " lines */" .. end_
-endfunction
+enddef
+
+defcompile

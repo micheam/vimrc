@@ -1,19 +1,5 @@
 vim9script
 
-# if $TERM =~ "kitty"
-#     " Insert / Normal でカーソルを切り替える
-#     let &t_SI = "\<Esc>[6 q"
-#     let &t_SR = "\<Esc>[4 q"
-#     let &t_EI = "\<Esc>[2 q"
-#     set t_ut =
-# 
-#     " xterm-bracketed-paste
-#     let &t_BE = "\e[?2004h"
-#     let &t_BD = "\e[?2004l"
-#     exec "set t_PS=\e[200~"
-#     exec "set t_PE=\e[201~"
-# endif
-
 set shell=bash
 set helplang=ja,en
 set hlsearch

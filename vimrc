@@ -60,3 +60,9 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
     set grepformat=%f:%l:%m
 endif
+
+if &term =~ "^xterm\\|^tmux\\|^screen"
+    let &t_SI = "\eP\e[6 q\e\\"
+    let &t_SR = "\eP\e[4 q\e\\"
+    let &t_EI = "\eP\e[2 q\e\\"
+endif

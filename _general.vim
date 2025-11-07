@@ -15,7 +15,7 @@ set nrformats-=octal
 set foldmarker={{{,}}}
 set foldmethod=marker
 set scrolloff=3
-set signcolumn=number
+set signcolumn=yes #number,yes,no,auto
 set number
 
 # grep後に自動でQuickFixWindowを開く 

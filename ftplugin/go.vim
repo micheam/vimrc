@@ -21,7 +21,13 @@ command Package {
 
 set foldmethod=syntax
 set nofoldenable
+set foldcolumn=0
+set foldlevel=0
+set foldminlines=3
 set foldtext=GoFoldText()
+set fillchars=fold:\ ,foldclose:>,foldopen:╭,foldsep:│,foldinner:\│
+highlight! link FoldColumn Folded
+
 def GoFoldText(): string
   const start = substitute(getline(v:foldstart), '\t', '    ', 'g')
   const end_ = substitute(getline(v:foldend), '\t', '', 'g')

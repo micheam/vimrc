@@ -121,7 +121,7 @@ endif
 " HTML {{{2
 if executable('html-languageserver')
     augroup LspHTML
-        au!
+        autocmd!
         autocmd User lsp_setup call lsp#register_server({
                     \ 'name': 'html-languageserver',
                     \ 'cmd': {server_info->['html-languageserver', '--stdio']},
@@ -133,6 +133,7 @@ if executable('html-languageserver')
                     \ 'allowlist': ['html'],
                     \ })
         autocmd FileType html setlocal omnifunc=lsp#complete
+        autocmd BufWritePre *.html LspDocumentFormatSync
     augroup END
 else
     call s:log("html-languageserver not found")
@@ -193,6 +194,7 @@ if executable('efm-langserver')
         \   'elm',
         \   'kotlin',
         \   'sh',
+        \   'html',
         \   ],
         \ })
   augroup END

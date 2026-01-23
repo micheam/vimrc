@@ -45,10 +45,8 @@ imap <C-j> <C-r>=sonictemplate#expand()<CR>
 
 Plug "h1mesuke/vim-alignta"
 Plug "majutsushi/tagbar"
-Plug "junegunn/fzf", { "do": "./install --all" } | Plug "junegunn/fzf.vim"
-set rtp+=/usr/local/opt/fzf
-set rtp+=/opt/homebrew/opt/fzf
-command! -bang -nargs=* Ag call fzf#vim#ag("", <bang>0 ? fzf#vim#with_preview("up:60%"): fzf#vim#with_preview("right:50%:hidden", "?"), <bang>0)
+Plug "junegunn/fzf", { 'do': { -> fzf#install() } }
+Plug "junegunn/fzf.vim"
 nnoremap <space>b :Buffers<CR>
 nnoremap <space>f :Files<CR>
 nnoremap <space>g :Ag<CR>

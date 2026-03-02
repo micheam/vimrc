@@ -76,3 +76,7 @@ silent! import autoload 'dist/comment.vim'
 nnoremap <silent> <expr> gc comment.Toggle()
 xnoremap <silent> <expr> gc comment.Toggle()
 nnoremap <silent> <expr> gcc comment.Toggle() .. '_'
+
+# gf で行番号付きジャンプ、gF で通常ジャンプ（デフォルトと入れ替え）
+nnoremap gf gF
+nnoremap gF gf

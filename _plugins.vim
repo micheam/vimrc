@@ -294,6 +294,8 @@ Plug "prabirshrestha/vim-lsp"
 #Plug "guns/vim-clojure-highlight"          , {"for": "clojure"}
 #Plug "venantius/vim-cljfmt"                , {"for": "clojure"}
 Plug "liquidz/elin", {"for": "clojure"}
+g:elin_enable_default_key_mappings = true
+g:elin#internal#select#selector = 'fzf'
 
 # Vimscript 
 Plug "vim-jp/vital.vim"

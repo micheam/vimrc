@@ -3,6 +3,7 @@ vim9script
 const vimrc_dir = fnamemodify(expand('$MYVIMRC'), ':h')
 
 plug#begin(vimrc_dir .. "/plugged") 
+g:plug_url_format = 'git@github.com:%s.git'
 
 # General 
 Plug "machakann/vim-sandwich" | nmap s <Nop> ; xmap s <Nop>
@@ -249,10 +250,9 @@ Plug "vim-scripts/Align"
  
 # markdown 
 Plug "iamcco/markdown-preview.vim"                 , {"for": "markdown"}
-Plug "rhysd/vim-gfm-syntax"                        , {"for": "markdown"} # TODO: README.md にだけ効かせた方が良いかな？
+Plug "rhysd/vim-gfm-syntax"                        , {"for": "markdown"}
 g:gfm_syntax_emoji_conceal = 1
 g:markdown_fenced_languages = ["json", "sql", "uml=plantuml", "yaml", "diff", "go", "sh", "shell=sh", "bash=sh", "clojure", "scheme", "proto"]
-Plug "micheam/vim-markdown-support"                , {"for": "markdown"}
  
 # yaml 
 Plug "avakhov/vim-yaml"
@@ -277,22 +277,14 @@ Plug "mattn/vim-gotmpl" | g:goimports_local = "micheam.com,github.com/micheam,fi
 # C/C++
 Plug "rhysd/vim-clang-format" , {"for": ["c", "cpp"]}
 
-# Rust
-Plug "rust-lang/rust.vim" | g:rust_clip_command = "pbcopy"
-
 # Zig
 Plug "ziglang/zig.vim"
-
 
 Plug "micheam/vim-go-test", {"for": "go", "branch": "develop"}
 g:force_reload_go_test = 1
 g:go_test_vervose = v:true
 g:go_test_enable_default_key_mappings = v:true
 
-# Dart 
-Plug "dart-lang/dart-vim-plugin"
-g:dart_format_on_save = 1
- 
 # Language Server Protocol 
 Plug "prabirshrestha/vim-lsp"
  
@@ -301,19 +293,16 @@ Plug "prabirshrestha/vim-lsp"
 #Plug "kien/rainbow_parentheses.vim"        , {"for": "clojure"}
 #Plug "guns/vim-clojure-highlight"          , {"for": "clojure"}
 #Plug "venantius/vim-cljfmt"                , {"for": "clojure"}
+Plug "liquidz/elin", {"for": "clojure"}
 
 # Vimscript 
 Plug "vim-jp/vital.vim"
-
-# Kotlin 
-Plug "udalov/kotlin-vim"
 
 # protobuf 
 Plug "uarun/vim-protobuf"
 Plug "micheam/vim9-bufbuild" | g:bufbuild_enable_command = 1
 
 # misc 
-Plug "fladson/vim-kitty"
 Plug "vim-scripts/BufOnly.vim"
 Plug "github/copilot.vim" | g:copilot_filetypes = { "proto": true, "markdown": true }
 Plug "tyru/capture.vim"

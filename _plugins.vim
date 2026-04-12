@@ -9,7 +9,7 @@ Plug "machakann/vim-sandwich" | nmap s <Nop> ; xmap s <Nop>
 Plug "justinmk/vim-dirvish"
 Plug "chrisbra/NrrwRgn"
 Plug "t9md/vim-choosewin" | nmap <space>` <Plug>(choosewin)
-Plug "guns/vim-sexp" | Plug "tpope/vim-sexp-mappings-for-regular-people"
+Plug "guns/vim-sexp"
 g:sexp_enable_insert_mode_mappings = 1
 g:sexp_filetypes = "clojure,scheme,lisp,timl"
 Plug 'girishji/vimcomplete'
@@ -33,6 +33,8 @@ g:quickrun_config = {
     },
   }
 Plug "tyru/open-browser.vim"
+g:netrw_nogx = 1
+
 Plug "mattn/webapi-vim"
 Plug "mattn/vim-sonictemplate" | Plug "micheam/vim-sonictemplate-template"
 g:sonictemplate_vim_template_dir = [
@@ -103,6 +105,7 @@ g:rbpt_loadcmd_toggle = 0
 Plug "vim-jp/vimdoc-ja"
  
 # other 
+#Plug "mattn/vim-smear-cursor"
 Plug "previm/previm", {"for": ["markdown", "rst"]} | g:rst_style = 1
 g:previm_disable_default_css = 1
 g:previm_enable_realtime = 1
@@ -297,12 +300,7 @@ Plug "prabirshrestha/vim-lsp"
 #Plug "guns/vim-clojure-static"             , {"for": "clojure"}
 #Plug "kien/rainbow_parentheses.vim"        , {"for": "clojure"}
 #Plug "guns/vim-clojure-highlight"          , {"for": "clojure"}
-#Plug "tpope/vim-fireplace"                 , {"for": "clojure"}
 #Plug "venantius/vim-cljfmt"                , {"for": "clojure"}
-Plug "liquidz/vim-iced"                    , {"for": "clojure"}
-g:iced_enable_default_key_mappings = v:true
-Plug "liquidz/vim-iced-project-namespaces" , {"for": "clojure"}
-Plug "liquidz/vim-iced-function-list"      , {"for": "clojure"}
 
 # Vimscript 
 Plug "vim-jp/vital.vim"

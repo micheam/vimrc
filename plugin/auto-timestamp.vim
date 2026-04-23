@@ -3,7 +3,7 @@ vim9script
 # Automatically update the timestamp in the file.
 #
 # Created: 2021-08-15 13:49
-# Last Updated: 2025-01-24T08:54:51+09:00
+# Last Updated: 2026-04-23T10:26:50+09:00
 #
 const default_keyword = '\c\(updated[ ,_]at\|last[ ,_]updated\)'
 const defualt_limit = 15
@@ -11,7 +11,7 @@ const default_offset = 0
 const default_format = '%Y-%m-%dT%H:%M:%S+09:00' # Timezone Offset 部分は、ワークラウンド...
 
 const debug = 0
-var auto_timestamp_enabled = 1
+var auto_timestamp_enabled = 0
 
 def Keyword(): string
     if exists('b:auto_timestamp_keyword') && !empty(b:auto_timestamp_keyword)

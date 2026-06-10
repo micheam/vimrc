@@ -312,7 +312,8 @@ Plug "tyru/capture.vim"
 #Plug "itchyny/vim-qfedit"
 #Plug "thinca/vim-qfreplace"
  
-Plug "micheam/ai-assistant-console"
+#Plug "~/src/github.com/micheam/vim-aico"
+Plug "micheam/vim-aico"
 Plug "micheam/select-node"
 
 plug#end()

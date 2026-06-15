@@ -1,5 +1,7 @@
 vim9script
 
+g:frontmatter_autopopup_enabled = true
+
 # YAML frontmatter をパースして popup でテーブル表示する。
 #
 # MVP の対応範囲:
@@ -55,6 +57,10 @@ export def Parse(lines: list<string>): list<dict<any>>
     return []
 enddef
 
+export def Exists(): bool
+    return len(Parse(getline(1, 50))) > 0
+enddef
+
 # popup の表示位置。g:frontmatter_popup_pos で切り替える。
 #   'topright' (デフォルト): カレントウィンドウの右上に固定
 #   'cursor': カーソルの直下
@@ -66,6 +72,11 @@ def PopupPosOpts(): dict<any>
     # topright (未知の値もこちらにフォールバック)
     const [wrow, wcol] = win_screenpos(0)
     return {pos: 'topright', line: wrow, col: wcol + winwidth(0) - 1}
+enddef
+
+# Popup を自動で表示するかどうか
+export def AutoPopupEnabled(): bool
+    return get(g:, 'frontmatter_autopopup_enabled', false)
 enddef
 
 # 表示中の popup の winid。閉じている (または未表示の) 場合は 0。

@@ -6,9 +6,9 @@ set shiftwidth=4
 
 def Package(): string
     const org_cwd = getcwd(0)
-    lcd %:p:h
+    silent! lcd %:p:h
     const slist = systemlist('go list .')
-    execute 'lcd ' .. org_cwd 
+    execute 'silent! lcd ' .. fnameescape(org_cwd) 
     if v:shell_error
         return ""
     endif

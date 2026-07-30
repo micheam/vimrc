@@ -4,7 +4,7 @@ setlocal previewheight=5
 setlocal tabstop=4
 setlocal shiftwidth=4
 
-def Package(): string
+def GoPackage(): string
     const org_cwd = getcwd(0)
     var result = ""
     try
@@ -19,8 +19,8 @@ def Package(): string
     return result
 enddef
 
-command Package {
-        echo Package()
+command GoPackage {
+        echo GoPackage()
     }
 
 setlocal foldmethod=syntax

@@ -1,31 +1,35 @@
 vim9script
 
-set previewheight=5
-set tabstop=4
-set shiftwidth=4
+setlocal previewheight=5
+setlocal tabstop=4
+setlocal shiftwidth=4
 
 def Package(): string
     const org_cwd = getcwd(0)
-    silent! lcd %:p:h
-    const slist = systemlist('go list .')
-    execute 'silent! lcd ' .. fnameescape(org_cwd) 
-    if v:shell_error
-        return ""
-    endif
-    return slist->get(0, "NONE")
+    var result = ""
+    try
+        silent! lcd %:p:h
+        const slist = systemlist('go list .')
+        if !v:shell_error
+            result = slist->get(0, "NONE")
+        endif
+    finally
+        execute 'silent! lcd ' .. fnameescape(org_cwd)
+    endtry
+    return result
 enddef
 
 command Package {
         echo Package()
     }
 
-set foldmethod=syntax
-set nofoldenable
-set foldcolumn=0
-set foldlevel=0
-set foldminlines=3
-set foldtext=GoFoldText()
-set fillchars=fold:\ ,foldclose:>,foldopen:╭,foldsep:│,foldinner:\│
+setlocal foldmethod=syntax
+setlocal nofoldenable
+setlocal foldcolumn=0
+setlocal foldlevel=0
+setlocal foldminlines=3
+setlocal foldtext=GoFoldText()
+setlocal fillchars=fold:\ ,foldclose:>,foldopen:╭,foldsep:│,foldinner:\│
 highlight! link FoldColumn Folded
 
 def GoFoldText(): string

@@ -306,14 +306,13 @@ Plug "micheam/vim9-bufbuild" | g:bufbuild_enable_command = 1
 
 # misc 
 Plug "vim-scripts/BufOnly.vim"
-Plug "github/copilot.vim" | g:copilot_filetypes = { "proto": true, "markdown": true }
 Plug "tyru/capture.vim"
 
 #Plug "itchyny/vim-qfedit"
 #Plug "thinca/vim-qfreplace"
  
-#Plug "~/src/github.com/micheam/vim-aico"
-Plug "micheam/vim-aico"
+Plug "~/src/github.com/micheam/vim-aico"
+#Plug "micheam/vim-aico"
 Plug "micheam/select-node"
 
 plug#end()

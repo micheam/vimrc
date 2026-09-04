@@ -178,28 +178,6 @@ if executable('ocamllsp')
     augroup END
 endif
 " }}}
-" efm {{{2
-if executable('efm-langserver')
-  augroup LspEFM
-    au!
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'efm-langserver',
-        \ 'cmd': {server_info->['efm-langserver', '-c='.$HOME.'/.config/efm-langserver/config.yaml']},
-        \ 'allowlist': [
-        \   'go',
-        \   'typescript',
-        \   'javascript',
-        \   'html',
-        \   'swift',
-        \   'elm',
-        \   'kotlin',
-        \   'sh',
-        \   'html',
-        \   ],
-        \ })
-  augroup END
-endif
-" }}}
 " elm {{{2
 if executable('elm-language-server')
   augroup elmLS
@@ -214,6 +192,7 @@ if executable('elm-language-server')
         \     ))},
         \ 'allowlist': ['elm'],
         \ })
+    autocmd BufWritePre *.elm LspDocumentFormatSync
   augroup END
 endif
 " }}}

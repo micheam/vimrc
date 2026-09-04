@@ -19,9 +19,54 @@ def GoPackage(): string
     return result
 enddef
 
+def GoDoc(symbol: string = ""): list<string>
+    var target = symbol
+    if target == ""
+        target = GoPackage()
+        if target == ""
+            return ["NONE"]
+        endif
+    endif
+    const cmd = $"go doc {shellescape(target)}"
+    const lines = systemlist(cmd)
+    if v:shell_error
+        return ["NONE"]
+    endif
+    return lines
+enddef
+
+def ShowInPreview(lines: list<string>, ft: string = "go")
+    silent! pclose
+    silent! new __GoDoc__
+    setlocal previewwindow
+    setlocal buftype=nofile bufhidden=wipe noswapfile
+    setlocal nobuflisted
+    execute $'setlocal filetype={ft}'
+    setlocal modifiable
+    setline(1, lines)
+    setlocal nomodifiable nomodified
+    execute $'resize {&previewheight}'
+    wincmd p
+enddef
+
+def ShowInPopup(lines: list<string>)
+    popup_create(lines, {
+        pos: 'center',
+        border: [],
+        padding: [0, 1, 0, 1],
+        maxheight: 20,
+        scrollbar: true,
+        close: 'click',
+    })
+enddef
+
 command GoPackage {
-        echo GoPackage()
-    }
+    echo GoPackage()
+}
+
+command -nargs=? GoDoc {
+    ShowInPreview(GoDoc(<q-args>))
+}
 
 setlocal foldmethod=syntax
 setlocal nofoldenable

@@ -65,7 +65,7 @@ command GoPackage {
 }
 
 command -nargs=? GoDoc {
-    ShowInPreview(GoDoc(<q-args>))
+    ShowInPreview(GoDoc(<q-args>), "text")
 }
 
 setlocal foldmethod=syntax

@@ -14,7 +14,7 @@ set listchars=tab:»-,trail:.,eol:$
 set nrformats-=octal
 set foldmarker={{{,}}}
 set foldmethod=marker
-set scrolloff=3
+set scrolloff=999 # ウィンドウの中央に固定
 set signcolumn=yes #number,yes,no,auto
 set number
 
